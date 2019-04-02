@@ -73,7 +73,7 @@
             También existe un <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/printer" target="_blank">plugin para 
             Mapea</a>, que por defecto usa la instancia centralizada de Geoprint del SIG Corporativo, pero puede configurarse para consumir cualquier otra:
         </p>
-        <div id="divmapgeoprint" style="width:75%;box-sizing: unset !important;position: relative;left:12%" class="m-container"></div>
+        <div id="divmapgeoprint" style="height:500px;width:75%;box-sizing: unset !important;position: relative;left:12%" class="m-container"></div>
             
     
     </div>
@@ -87,7 +87,7 @@
                 mapajs = M.map({
                     container: 'divmapgeoprint',
                     controls: ['scale','panzoombar'],
-                    wmcfiles: ['https://mapea4-sigc.juntadeandalucia.es/files/wmc/cdau.xml*Callejero','https://mapea4-sigc.juntadeandalucia.es/files/wmc/satelite.xml*Satelite']
+                    wmcfiles: ['mapa','satelite']
                 });
                 mapajs.addPlugin(new M.plugin.Printer({
                 "params": {
@@ -102,7 +102,7 @@
                 'options': {
                     'layout': 'imagen apaisada',
                     'format': 'png',
-                    'dpi': '127'
+                    'dpi': 127
                     } 
                 }));
             }

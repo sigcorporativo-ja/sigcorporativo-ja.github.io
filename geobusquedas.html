@@ -9,15 +9,19 @@
 <div class="tab-content">
     <!-- Tab de descripcion -->
     <div id="descripcion" class="tab-pane active" role="tabpanel">
-        <p>El uso de estádares para la difusión de información espacial está ampliamente extendido hoy en día. Además del acceso, permiten la consulta 
+        <p>El uso de estádares para la difusión de información espacial está ampliamente extendido hoy en día. Además
+            del acceso, permiten la consulta
             de datos específicos en base a criterios de búsquedas.
         </p>
         <p>
-            Sin embargo, las búsquedas de información espacial realizadas a través de estándares <b>suelen requerir que el usuario conozca la 
-            estructura interna de la misma</b>. Por ejemplo, la siguiente consulta utiliza un filtro CQL para buscar por su nombre un fenómeno espacial 
-            o feature de tipo "parque" a través de una petición a un servicio WFS por el que se publica la capa correspondiente:
+            Sin embargo, las búsquedas de información espacial realizadas a través de estándares <b>suelen requerir que
+                el usuario conozca la
+                estructura interna de la misma</b>. Por ejemplo, la siguiente consulta utiliza un filtro CQL para buscar
+            por su nombre un fenómeno espacial
+            o feature de tipo "parque" a través de una petición a un servicio WFS por el que se publica la capa
+            correspondiente:
             <p class="bg-light">
-<pre lang="xml"><code>
+                <pre lang="xml"><code>
 &lt;wfs:GetFeature version="1.1.0"&gt;
  &lt;wfs:Query <b>typeName="espacios:Parques"</b>&gt;
     &lt;ogc:Filter&gt;
@@ -30,127 +34,148 @@
 &lt;/wfs:GetFeature&gt; 
 </code></pre>
             </p>
-            <p>Puede observarse como es necesario especificar no solo el nombre por el que se busca, sino <b>también el de la propiedad 
-               que lo contiene, 'nombre_parq'</b>. Además, la consulta debe ejecutarse específicamente contra la capa en cuestión, indicada en el 
+            <p>Puede observarse como es necesario especificar no solo el nombre por el que se busca, sino <b>también el
+                    de la propiedad
+                    que lo contiene, 'nombre_parq'</b>. Además, la consulta debe ejecutarse específicamente contra la
+                capa en cuestión, indicada en el
                 <i>typeName</i>.
             </p>
-            <p>Un usuario externo no posee dicha información. El objetivo es que pueda realizar las búsquedas mediante lenguaje natural, es decir, especificando 
+            <p>Un usuario externo no posee dicha información. El objetivo es que pueda realizar las búsquedas mediante
+                lenguaje natural, es decir, especificando
                 únicamente un nombre, palabra o frase.
             </p>
-            <p><b>Geobúsquedas</b> es el nombre que recibe la instancia centralizada de <a href="http://lucene.apache.org/solr/" target="_blank">Apache SOLR</a> del SIGCorporativo, a la que se le ha añadido una serie de 
+            <p><b>Geobúsquedas</b> es el nombre que recibe la instancia centralizada de <a
+                    href="http://lucene.apache.org/solr/" target="_blank">Apache SOLR</a> del SIGCorporativo, a la que
+                se le ha añadido una serie de
                 funcionalidades que faciliten la indexación y búsqueda de información espacial, tales como:
             </p>
             <ul>
-                <li>Indexación de servicios WFS con paginación automática de peticiones cuando hay límite en el número de features devueltos.</li>
+                <li>Indexación de servicios WFS con paginación automática de peticiones cuando hay límite en el número
+                    de features devueltos.</li>
                 <li>Indexación de tablas Postgresql/Postgis.</li>
-                <li>Tesauros espaciales predefinidos para consultas de relación entre elementos: en, cerca de, próximo, etc.</li>
-                <li>Parámetros de búsquedas espaciales: "srs" para especificar el sistema de referencia de las geometrías devueltas, "pt" para 
+                <li>Tesauros espaciales predefinidos para consultas de relación entre elementos: en, cerca de, próximo,
+                    etc.</li>
+                <li>Parámetros de búsquedas espaciales: "srs" para especificar el sistema de referencia de las
+                    geometrías devueltas, "pt" para
                     búsquedas centradas en un punto, entre otros.
                 </li>
             </ul>
-            <p>De esta manera, cada core de Geobúsquedas contiene la información indexada de uno o varios servicios WFS. Una vez configurados internamente, 
-                los elementos espaciales pueden buscarse mediante consultas en lenguaje natural, por los valores de sus atributos o <b>mediante relaciones espaciales 
-                entre ellos</b>. 
+            <p>De esta manera, cada core de Geobúsquedas contiene la información indexada de uno o varios servicios WFS.
+                Una vez configurados internamente,
+                los elementos espaciales pueden buscarse mediante consultas en lenguaje natural, por los valores de sus
+                atributos o <b>mediante relaciones espaciales
+                    entre ellos</b>.
             </p>
-    
+
             <img width="70%" class="center" src="./img/geobusquedas.png" alt="Geobúsquedas">
-    
-            <br><p>Para indexar tu información necesitas por tanto:</p>
+
+            <br>
+            <p>Para indexar tu información necesitas por tanto:</p>
             <ul>
-                <li>Servicios WFS para las capas que contengan los elementos que puedan buscarse mediante lenguaje natural.</li>
-                <li>Tener claro qué tipo de búsquedas quieres: por qué atributos poder buscar, cuáles mostrar en los resultados, qué importancia o peso tiene 
+                <li>Servicios WFS para las capas que contengan los elementos que puedan buscarse mediante lenguaje
+                    natural.</li>
+                <li>Tener claro qué tipo de búsquedas quieres: por qué atributos poder buscar, cuáles mostrar en los
+                    resultados, qué importancia o peso tiene
                     cada uno, etc. </li>
-                <li>Decidir qué otras capas pueden actuar como referencia espacial: divisiones administrativas, espacios naturales,... </li>
+                <li>Decidir qué otras capas pueden actuar como referencia espacial: divisiones administrativas, espacios
+                    naturales,... </li>
             </ul>
     </div>
 
     <!-- Tab de uso -->
     <div id="uso" class="tab-pane" role="tabpanel">
-         <p>Una vez indexada la información, para consumir el servicio existen dos opciones:<br></p>
-            <ul>
-               <li>Pueden realizarse las consultas directamente a través del api REST <br>
-                   <a href="https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true" target="_blank">
-                       <code>https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true</code></a>
-               </li>
-               <li>También pueden realizarse las búsquedas mediante el 
-                   <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/geosearch" target="_blank">plugin de Mapea</a> creado
-                     específicamente para ello, que por defecto consume la instancia centralizada de Geobúsquedas, pero que puede configurarse para comunicarse 
-                     con cualquier otra:</li>
-           </ul>
-           <div id="divmapgeobusquedas" style="width:75%;box-sizing: unset !important;position: relative;left:12%" class="m-container"></div>
+        <p>Una vez indexada la información, para consumir el servicio existen dos opciones:<br></p>
+        <ul>
+            <li>Pueden realizarse las consultas directamente a través del api REST <br>
+                <a href="https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true"
+                    target="_blank">
+                    <code>https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true</code></a>
+            </li>
+            <li>También pueden realizarse las búsquedas mediante el
+                <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/geosearch"
+                    target="_blank">plugin de Mapea</a> creado
+                específicamente para ello, que por defecto consume la instancia centralizada de Geobúsquedas, pero que
+                puede configurarse para comunicarse
+                con cualquier otra:</li>
+        </ul>
+        <div id="divmapgeobusquedas"
+            style="height:500px;width:75%;box-sizing: unset !important;position: relative;left:12%" class="m-container">
+        </div>
     </div>
     <!-- Tab de ejemplos -->
-    <div id="ejemplos" class="tab-pane" role="tabpanel">  
-            <div id="carouselGeobusquedas" class="carousel slide" data-ride="carousel" style="width:90%; margin: 0 auto">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselGeobusquedas" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselGeobusquedas" data-slide-to="1"></li>
-                      <li data-target="#carouselGeobusquedas" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                            <p style="text-align:center"><a href="http://www.conocetusfuentes.com" target="_blank">Conoce tus Fuentes</a></p>
-                            <img class="d-block w-100" src="./img/fuentes.png" alt="Visor IDEAndalucia">
-                            <!--<div class="carousel-caption d-none d-md-block">
+    <div id="ejemplos" class="tab-pane" role="tabpanel">
+        <div id="carouselGeobusquedas" class="carousel slide" data-ride="carousel" style="width:90%; margin: 0 auto">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselGeobusquedas" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselGeobusquedas" data-slide-to="1"></li>
+                <li data-target="#carouselGeobusquedas" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <p style="text-align:center"><a href="http://www.conocetusfuentes.com" target="_blank">Conoce tus
+                            Fuentes</a></p>
+                    <img class="d-block w-100" src="./img/fuentes.png" alt="Visor IDEAndalucia">
+                    <!--<div class="carousel-caption d-none d-md-block">
                                     <h5 style="text-shadow: 0.1em 0.1em 0.2em black">Fuentes y Manantiales</h5>
                                     <p style="text-shadow: 0.1em 0.1em 0.2em black">http://www.conocetusfuentes.com</p>
                                   </div>-->
-                      </div>
-                      <div class="carousel-item">
-                            <p style="text-align:center"><a href="http://www.callejerodeandalucia.es" target="_blank">Callejero Digital de Andalucía</a></p>
-                            <img class="d-block w-100" src="./img/cdau.png" alt="Callejero Digital de Andalucía">
-                            <!--<div class="carousel-caption d-none d-md-block">
+                </div>
+                <div class="carousel-item">
+                    <p style="text-align:center"><a href="http://www.callejerodeandalucia.es" target="_blank">Callejero
+                            Digital de Andalucía</a></p>
+                    <img class="d-block w-100" src="./img/cdau.png" alt="Callejero Digital de Andalucía">
+                    <!--<div class="carousel-caption d-none d-md-block">
                                 <h5 style="text-shadow: 0.1em 0.1em 0.2em black">Callejero Digital de Andalucía Unificado</h5>
                                 <p style="text-shadow: 0.1em 0.1em 0.2em black">http://www.callejerodeandalucia.es</p>
                             </div>-->
-                      </div>
-                      <div class="carousel-item">
-                        <p style="text-align:center"><a href="http://www.ieca.junta-andalucia.es/mapa_equipamientos/geolocalizacion/index.htm" target="_blank">
+                </div>
+                <div class="carousel-item">
+                    <p style="text-align:center"><a
+                            href="http://www.ieca.junta-andalucia.es/mapa_equipamientos/geolocalizacion/index.htm"
+                            target="_blank">
                             Sedes y Equipamientos de la Junta de Andalucía</a></p>
-                        <img class="d-block w-100" src="./img/sedes.png" alt="Sedes y Equipamientos de la Junta de Andalucía">
-                        <!--<div class="carousel-caption d-none d-md-block">
+                    <img class="d-block w-100" src="./img/sedes.png"
+                        alt="Sedes y Equipamientos de la Junta de Andalucía">
+                    <!--<div class="carousel-caption d-none d-md-block">
                             <h5 style="text-shadow: 0.5em 0.1em 0.5em black">Sedes y Equipamientos de la JdA</h5>
                             <p style="text-shadow: 0.5em 0.1em 0.5em black">http://www.ieca.junta-andalucia.es/mapa_equipamientos/geolocalizacion/index.htm</p>
                         </div>-->
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselGeobusquedas" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselGeobusquedas" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselGeobusquedas" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselGeobusquedas" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
 </div>
 
 <script lang="javascript">
-
-        var mapajs = null;
-        $('.nav-pills a[href="#uso"]').on('shown.bs.tab', function (e) {
-           if (!mapajs){ 
-                mapajs = M.map({
-                    container: 'divmapgeobusquedas',
-                    controls: ['scale','panzoombar'],
-                    wmcfiles: ['https://mapea4-sigc.juntadeandalucia.es/files/wmc/cdau.xml*Callejero','https://mapea4-sigc.juntadeandalucia.es/files/wmc/satelite.xml*Satelite']
-                });
-                let p = new M.plugin.Geosearch({
+    var mapajsGeobusquedas = null;
+    var p = null;
+    $('.nav-pills a[href="#uso"]').on('shown.bs.tab', function (e) {
+        if (!mapajsGeobusquedas) {
+            mapajsGeobusquedas = M.map({
+                container: 'divmapgeobusquedas',
+                controls: ['scale', 'panzoombar'],
+                wmcfiles: ['mapa', 'satelite']
+            });
+            p = new M.plugin.Geosearch({
                 "core": "sigc",
                 "url": "https://geobusquedas-sigc.juntadeandalucia.es/",
                 "handler": "/search"
-                });
-                
-                mapajs.addPlugin(p);
-                mapajs.getControls('geosearch')[0].on(M.evt.ADDED_TO_MAP, function(){
-                        mapajs.getPanels('geosearch')[0].open();
-                        document.getElementById('m-geosearch-search-input').value = "Colegios en Tomares";
-                        document.getElementById('m-geosearch-search-btn').click();
-                })
-            }
-        });
-    
-    
-        
-    </script>
+            });
+
+            mapajsGeobusquedas.addPlugin(p);
+            mapajsGeobusquedas.getPanels('geosearch')[0].open();
+            document.getElementById('m-geosearch-search-input').value = "Colegios en Tomares";
+            document.getElementById('m-geosearch-search-btn').click();
+
+
+        }
+    });
+</script>

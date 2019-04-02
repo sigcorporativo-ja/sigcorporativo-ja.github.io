@@ -9,7 +9,6 @@
 <div class="tab-content">
     <!-- Tab de Descripcion -->
     <div id="descripcion" class="tab-pane active" role="tabpanel" >
-        <p>
             <p>
                 Mapea es una librería javascript para la construcción de visualizadores de mapas. 
                 Ofrece una capa de abstracción o <b>fachada</b>, colocada sobre una capa de <b>implementación</b> 
@@ -30,11 +29,9 @@
                 <a target="_blank" href="https://github.com/sigcorporativo-ja/Mapea4/wiki" class="btn btn-info btn-lg" 
                 style="color:white;text-decoration: none">Accede a la WIKI</a>
             </p>
-            <p>    
-                    <div id="divmap" style="width:75%;box-sizing: unset !important;position: relative;left:12%" class="m-container"></div>
-            </p>
-
-        </p>
+               
+                    <div id="divmap" style="height:500px;width:75%;box-sizing:unset!important;position:relative;left:12%" class="m-container"></div>
+            
     </div>
     <!-- Tab de Uso -->
     <div id="uso" class="tab-pane" role="tabpanel">
@@ -140,17 +137,15 @@
 </div>
 <script lang="javascript">
 
-    var mapajs = null;
+    //var mapajs = null;
     /*$('.nav-pills a[href="#ejemplos"]').on('shown.bs.tab', function (e) {
        if (!mapajs){ */
-            mapajs = M.map({
-                container: 'divmap',
+            var mapajs = new M.map({
+                container: "divmap",
                 controls: ['layerswitcher','scale','panzoombar'],
-                wmcfiles: ['https://mapea4-sigc.juntadeandalucia.es/files/wmc/cdau.xml*Callejero','https://mapea4-sigc.juntadeandalucia.es/files/wmc/satelite.xml*Satelite']
+                wmcfiles: ['mapa','satelite']
             });
         /*}
     });*/
-
-
     
 </script>
