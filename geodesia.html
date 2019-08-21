@@ -1,0 +1,46 @@
+<h2>Geodesia</h2>
+
+<ul class="nav nav-pills">
+    <li class="nav-item"><a class="nav-link active" data-toggle="pill" href="#escenario">Escenario</a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="pill" href="#uso">Uso</a></li>
+</ul>
+
+<div class="tab-content">
+    <!-- Tab de Escenario -->
+    <div id="escenario" class="tab-pane active" role="tabpanel">
+        <p> El <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2007-15822" target="blank_">Real Decreto 1071/2007 de 27 de julio</a> estableció cambios en las referencias geodésicas oficiales para la cartografía producida y utilizada por los organismos públicos en España, 
+            siendo uno de los cambios más relevantes la adopción del <b>European Terrestrial Reference System 1989</b> como sistema de referencia vigente en sustitución del anterior European Datum 1950. 
+            Además, se adoptaron proyecciones diferentes en función de la escala de los mapas producidos. En concreto, la proyección <i>Transversal Universal de Mercator (UTM)</i> para mapas en escalas 
+            superiores a 1:500.000, y la proyección <i>Cónica Conforme de Lambert</i> para escalas inferiores o iguales.
+        </p>
+        <p>
+            Estos cambios, junto con la existencia de varias proyecciones y husos oficiales en el territorio español y andaluz, hacían necesario disponer de herramientas que permitieran reproyectar 
+            la cartografía entre las diferentes referencias geodésicas y proyecciones utilizadas comúnmente. Dichas herramientas geodésicas proporcionan a los usuarios un conjunto de operaciones que les 
+            permiten realizar estos cambios de forma consistente y homogénea, adaptándose a las necesidades de la mayoría de los usuarios que utilizan información espacial en los diferentes 
+            organismos, siguiendo las políticas relativas al software de la Junta de Andalucía. 
+        </p>
+        <p>
+            La finalidad de estos servicios es por tanto proporcionar un conjunto de métodos que nos permiten realizar transformaciones de información espacial entre los distintos sistemas de 
+            referencia oficiales en Andalucía y España.
+        </p>
+        
+    </div>
+
+    <!-- Tab de Uso -->
+    <div id="uso" class="tab-pane" role="tabpanel">
+        <p>La funcionalidad de <b>Geodesia</b> se ofrece a través de un Servicio Web SOAP abierto, que puede consumirse desde cualquier cliente a través de:
+        </p>
+        <p style="text-align: center">
+            <code>http://www.juntadeandalucia.es/servicios/mapas/geodesiaservices/services/TransformWS?wsdl</code>
+        </p>
+        <p>
+        También existe un cliente ligero de referencia mediante el cual pueden realizarse transformaciones espaciales de coordenadas y de ficheros de textos:
+        </p>
+        <p style="text-align: center">
+            <code><a href="http://www.juntadeandalucia.es/servicios/mapas/geodesiaclient/" target="blank_">http://www.juntadeandalucia.es/servicios/mapas/geodesiaclient/</a></code>
+        </p>
+        <p>
+            <img src="/img/geodesia_web.png" alt="Calar web" width="55%" style="margin-left: 20%" >
+        </p>
+    </div>
+</div>
