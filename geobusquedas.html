@@ -84,12 +84,25 @@
 
     <!-- Tab de uso -->
     <div id="uso" class="tab-pane" role="tabpanel">
+        <p>En caso de estar interesado en la indexación de información espacial en la instancia de Geobúsquedas del SIGCorporativo, el primer paso sería contactar con el proyecto
+             a través de <a href="mailto:l-dirsigc.chap@juntadeandalucia.es?Subject=Consulta" target="_blank">l-dirsigc.chap@juntadeandalucia.es</a> explicando 
+             sus necesidades.
+        </p>
         <p>Una vez indexada la información, para consumir el servicio existen dos opciones:<br></p>
         <ul>
-            <li>Pueden realizarse las consultas directamente a través del api REST <br>
+            <li><p>Pueden realizarse las consultas a un core concreto directamente a través del api REST, por ejemplo: <br>
                 <a href="https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true"
                     target="_blank">
-                    <code>https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true</code></a>
+                    <code>https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true</code>
+                </a></p>
+                <p>Entre los formatos de respuesta disponibles es especialmente útil el de JSONP para su uso desde aplicaciones web, para lo cual bastaría
+                     añadir el parámetro "&json.wrf=funcionCallback" a la llamada:<br>
+                 <a href="https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true&json.wrf=miFuncion"
+                     target="_blank">
+                     <code>https://geobusquedas-sigc.juntadeandalucia.es/geobusquedas/sigc/search?q=colegios+en+Tomares&wt=json&indent=true&json.wrf=miFuncion</code>
+                </a>
+                </p>
+                </li>
             </li>
             <li>También pueden realizarse las búsquedas mediante el
                 <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/geosearch"
