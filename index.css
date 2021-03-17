@@ -238,3 +238,7 @@ CODE
 .bg-light {
   background-color: whitesmoke !important
 }
+
+.m-printer-container > div.button > button.remove {
+  width: auto;
+}

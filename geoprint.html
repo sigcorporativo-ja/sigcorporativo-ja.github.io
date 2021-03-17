@@ -63,15 +63,24 @@
     </div>
     <!-- Tab de Uso -->
     <div id="uso" class="tab-pane" role="tabpanel">
-        <p><b>Geoprint</b> es un servicio web que puede consumirse desde cualquier cliente a través de su 
-            <a href="http://www.mapfish.org/doc/print/protocol.html" target="_blank">api web</a>:
+        <p>
+            Internamente, Geoprint se organiza en forma de <b>configuraciones de impresión</b>. Una configuración de impresión define,
+             entre otras características, una serie de plantillas, formatos y DPIs disponibles, independientes de las características 
+            de otras configuraciones. Así, una aplicación web puede tener definida una configuración de impresión propia para ella.
+        </p>
+        <p>Como Servicio web, puede consumirse desde cualquier cliente a través de su 
+            <a href="https://mapfish.github.io/mapfish-print-doc/api.html" target="_blank">api web</a>, en la que se debe especificar 
+            la configuración de impresión a usar:
         </p>
         <p>
-            <code>http://geoprint-sigc.juntadeandalucia.es/</code>
+            <code>https://geoprint-sigc.juntadeandalucia.es/geoprint3/print/SIGC/capabilities.json?pretty=true</code>
         </p>
         <p>
-            También existe un <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/printer" target="_blank">plugin para 
-            Mapea</a>, que por defecto usa la instancia centralizada de Geoprint del SIG Corporativo, pero puede configurarse para consumir cualquier otra:
+            En el ejemplo anterior, se están solicitando las capacidades de la configuración de impresión "SIGC".
+        </p>
+        <p>
+            También existe un <a href="https://github.com/sigcorporativo-ja/Mapea4/tree/master/mapea-js/src/plugins/printerdos" target="_blank">plugin para 
+            Mapea</a>, que por defecto usa la configuración de impresión SIGC, pero puede configurarse para consumir cualquier otra:
         </p>
         <div id="divmapgeoprint" style="height:75vh;width:60vw;box-sizing: unset !important;position: relative;left:12%" class="m-container"></div>
             
@@ -89,7 +98,7 @@
                     controls: ['scale','panzoombar'],
                     wmcfiles: ['mapa','satelite']
                 });
-                mapajs.addPlugin(new M.plugin.Printer({
+                /*mapajs.addPlugin(new M.plugin.Printer({
                 "params": {
                     "pages": {
                     "creditos": "Impresión generada a través de Mapea"
@@ -104,7 +113,9 @@
                     'format': 'png',
                     'dpi': 127
                     } 
-                }));
+                }));*/
+                let printerPlugin = new M.plugin.Printer();
+                mapajs.addPlugin(printerPlugin);
             }
         });
     
