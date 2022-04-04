@@ -1,0 +1,64 @@
+<p>
+    <p><b>Situaci&oacute;n actual</b><br />
+        <br />
+        Actualmente existen en Producci&oacute;n dos versiones del servicio de impresi&oacute;n en alta resoluci&oacute;n Geoprint:</p>
+        
+        <ul>
+            <li>El servicio original, basado en una versi&oacute;n inicial de MapfishPrint, accesible desde: <a target="_blank" href="https://geoprint-sigc.juntadeandalucia.es/geoprint" >https://geoprint-sigc.juntadeandalucia.es/geoprint</a></li>
+            <li>El servicio actualizado a MapfishPrint v3, accesible desde: <a target="_blank" class="tab-content" href="https://geoprint-sigc.juntadeandalucia.es/geoprint3">https://geoprint-sigc.juntadeandalucia.es/geoprint3</a></li>
+        </ul>
+        
+        <p>El concepto b&aacute;sico de ambas versiones es el mismo: atender peticiones de impresi&oacute;n de mapas a un DPI espec&iacute;fico partiendo de la informaci&oacute;n necesaria para generarlos: servicios OGC de las capas raster, los datos de las vectoriales, coordenadas de la vista y dimensiones del formato.</p>
+        
+        <p>Las mejoras de la v3 respecto a la anterior incluyen, adem&aacute;s de las mejoras t&eacute;cnicas y de rendimiento propias de este tipo de evolutivo, aspectos tales como la posibilidad de dise&ntilde;ar las plantillas de impresi&oacute;n en formato jasper reports, y la posibilidad de disponer de las denominadas &quot;configuraciones de impresi&oacute;n&quot;, que son ahora independientes unas de otras facilitando as&iacute; su consumo por parte de los clientes.</p>
+        
+        <p><b>Uso de Geoprint desde Mapea</b></p>
+        
+        <p>Geoprint es un Servicio Web y puede consumirse como tal. Adicionalmente, se desarroll&oacute; un plugin de Mapea que ofrece la posibilidad de consumirlo desde un visualizador de mapas, llamado &quot;printer&quot;.</p>
+        
+        <p>&nbsp;&nbsp;&nbsp; <a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/?printer">https://mapea4-sigc.juntadeandalucia.es/?printer</a></p>
+        
+        <p>Desafortunadamente, la v3 de MapfishPrint no es retrocompatible, y es por ello que actualmente conviven las dos instancias del servicio y que se ha desarrollado un plugin nuevo compatible con la v3:</p>
+        
+        <p>&nbsp;&nbsp; <a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/?printerdos">https://mapea4-sigc.juntadeandalucia.es/?printerdos</a></p>
+        
+        <p>De cara a facilitar todo lo posible la migraci&oacute;n desde el plugin antiguo en aquellos visores que lo usen, este nuevo plugin <u>es compatible con todas las versiones de Mapea</u>.</p>
+        
+        <p><b>Migraci&oacute;n plugin de impresi&oacute;n en Mapea api js</b></p>
+        
+        <p>Para migrar de un plugin a otro, basta con reemplazar los ficheros del plugin printer por los de printerdos, ya sea expl&iacute;citamente:</p>
+        
+        <ul>
+            <li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/plugins/printerdos/printerdos-4.0.0.ol.min.js">https://mapea4-sigc.juntadeandalucia.es/plugins/printerdos/printerdos-4.1.0.ol.min.js</a></li>
+            <li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/plugins/printerdos/printerdos-4.0.0.min.css">https://mapea4-sigc.juntadeandalucia.es/plugins/printerdos/printerdos-4.1.0.min.css</a></li>
+        </ul>
+        
+        <p>O mediante el <a target="_blank" href="https://github.com/sigcorporativo-ja/Mapea4/wiki/API-Resources-Plugins">api rest de resources-plugin</a> (por ejemplo, para una versi&oacute;n 5.1.0 de Mapea, las llamadas ser&iacute;an):</p>
+        
+        <ul>
+            <li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/mapea/api/actions/resourcesPlugins?name=printerdos&amp;version=5.1.0&amp;type=js">https://mapea4-sigc.juntadeandalucia.es/mapea/api/actions/resourcesPlugins?name=printerdos&amp;version=5.1.0&amp;type=js</a></li>
+            <li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/mapea/api/actions/resourcesPlugins?name=printerdos&amp;version=5.1.0&amp;type=css">https://mapea4-sigc.juntadeandalucia.es/mapea/api/actions/resourcesPlugins?name=printerdos&amp;version=5.1.0&amp;type=css</a></li>
+        </ul>
+        
+        <p>Ejemplo funcional de Mapea v4.x con plugin printerdos: &nbsp;</p>
+        
+        <p>&nbsp;&nbsp;&nbsp;&nbsp; <a target="_blank" href="https://jsfiddle.net/sigcJunta/p3b8hsk4/">https://jsfiddle.net/sigcJunta/p3b8hsk4/</a></p>
+        
+        <p><b>Si existen plantillas espec&iacute;ficas para el visor</b></p>
+        
+        <p>Algunos visores de mapas que usan Geoprint disponen de su propia plantilla de impresi&oacute;n, con logotipo y formato personalizados. En esos casos, se ha migrado la plantilla del antiguo formato yaml al nuevo dise&ntilde;o jasper, y para acceder a ella desde el visor, basta con iniciar el plugin printerdos con la url asociada a dicha configuraci&oacute;n. M&aacute;s informaci&oacute;n en la p&aacute;gina del plugin printerdos:</p>
+        
+        <p>&nbsp;&nbsp;&nbsp; <a target="_blank"  href="https://github.com/sigcorporativo-ja/Mapea4/tree/develop/mapea-js/src/plugins/printerdos">https://github.com/sigcorporativo-ja/Mapea4/tree/develop/mapea-js/src/plugins/printerdos</a></p>
+        
+        <p>Tal como se ha comentado antes, ahora el plugin solo mostrar&aacute; las plantillas asociadas a esta configuraci&oacute;n, por lo que si con el plugin anterior se realizaba alguna gesti&oacute;n de los desplegables para que eliminara otras plantillas, ya no es necesario.</p>
+        
+        <p><b>Migraci&oacute;n plugin de impresi&oacute;n en Mapea api REST</b></p>
+        
+        <p>Para la migraci&oacute;n del plugin en un Mapea generado por el api REST, solo hay que cambiar de &quot;printer&quot; a &quot;printerdos&quot; en la llamada al api:</p>
+        
+        <p>&nbsp;&nbsp;&nbsp; <a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/?printerdos">http://mapea4-sigc.juntadeandalucia.es/?printerdos</a></p>
+        
+        <p><b>M&aacute;s informaci&oacute;n</b></p>
+        
+        <p>Secci&oacute;n Geoprint3 en la p&aacute;gina: <a target="_blank"  href="https://sigcorporativo-ja.github.io/">https://sigcorporativo-ja.github.io/</a></p>
+</p>

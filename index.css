@@ -154,6 +154,15 @@ a:focus {
   
 }
 
+#contentppal .panel-body a{
+  color: dodgerblue;
+}
+
+#contentppal .panel-body a:hover{
+  color: blue;
+  
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -241,4 +250,9 @@ CODE
 
 .m-printer-container > div.button > button.remove {
   width: auto;
+}
+
+.dropdown-toggle.noticia {
+  color: goldenrod;
+  font-weight: bold;
 }
