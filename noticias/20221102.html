@@ -1,0 +1,34 @@
+<p>Se ha puesto en Producci&oacute;n la v6.3.0 de Mapea. Para su uso, se encuentran disponibles los recursos:</p>
+
+<p>
+<ul>
+	<li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/assets/css/mapea-6.3.0.ol.min.css">https://mapea4-sigc.juntadeandalucia.es/assets/css/mapea-6.3.0.ol.min.css</a></li>
+	<li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/js/mapea-6.3.0.ol.min.js">https://mapea4-sigc.juntadeandalucia.es/js/mapea-6.3.0.ol.min.js</a></li>
+	<li><a target="_blank"  href="https://mapea4-sigc.juntadeandalucia.es/js/configuration-6.3.0.js">https://mapea4-sigc.juntadeandalucia.es/js/configuration-6.3.0.js</a></li>
+</ul>
+</p>
+
+<p><span style="text-decoration: underline;">Notas versi&oacute;n 6.3.0</span></p>
+
+<div>
+<p><strong>API js</strong></p>
+
+<ul>
+	<li>Actualización OpenLayer a v6.15.1</li>
+	<li>Los objetos Layer pasan a ser gestionados internamente mediante un nuevo atributo 'id' en lugar de mediante su atributo 'name', lo que permite tener en un mismo mapa diferentes capas con el mismo nombre. Esto permitiría por ejemplo cargar dos veces la misma capa desde un servicio WMS, cada una con un 'styles' diferente.</li>
+	<li>Las capas MVT pueden ser ahora capas "base" de un mapa.</li>
+	<li>Plugin printerdos ofrece un soporte limitado a capas MVT.</li>
+	<li>El nuevo parámetro de mapa 'layerswitcher' permite inicializar dicho control con una capa vacía como capa base.</li>
+	<li>Plugin searchstreetgeosearch: Los resultados del autocompletado ya no pisan los resultados de la búsqueda. Se borran resultados dibujados en el mapa al pulsar sobre "limpiar búsqueda".</li>
+	<li>Todos los plugins del core disparan ahora el evento M.evt.ADDED_TO_MAP al ser añadidos al mapa.</li>
+	<li>Las simbologías temáticas pasan a usar internamente la simbología Generic.</li>
+	<li>Nuevo método de mapa para cambiar a la escala más cercana.</li>
+	<li>Nuevo metodo de mapa para añadir más de un plugin a la vez.</li>
+	<li>Plugin attributetable ofrece ahora la posibilidad de seleccionar y hacer zoom a elementos desde la tabla de atributos.</li>
+	<li>Cuando no se especifique atributo 'version' de una capa WMS, se pasará a usar por defecto la versión 1.3.0 de dicho estándar.</li>
+	<li>Las propiedades de configuración de Mapea no dependen ya del protocolo del cliente, se establecen por defecto a https.</li>
+	<li>Si el sistema donde se levanta Mapea tiene configuradas propiedades java de autenticación de proxy para acceder a internet, el proxy de Mapea utilizará esas </li>
+</ul>
+
+<p>El c&oacute;digo fuente se encuentra <a target="_blank" href="https://github.com/sigcorporativo-ja/Mapea4/releases/tag/v6.3.0">disponible en GitHub</a>, y la <a target="_blank" href="https://github.com/sigcorporativo-ja/Mapea4/wiki" rel="nofollow">wiki</a> se ir&aacute; actualizando para recoger estas novedades en los pr&oacute;ximos d&iacute;as.</p>
+</div>
